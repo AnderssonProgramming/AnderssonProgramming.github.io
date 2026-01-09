@@ -2,16 +2,36 @@ import { motion } from 'framer-motion';
 
 const TechStack = () => {
   const technologies = [
+    // Web Development
     { name: 'Java', icon: '☕' },
     { name: 'Spring Boot', icon: '🍃' },
     { name: 'React', icon: '⚛️' },
+    { name: 'Next.js', icon: '▲' },
     { name: 'TypeScript', icon: '📘' },
     { name: 'Python', icon: '🐍' },
+    // Databases
     { name: 'PostgreSQL', icon: '🐘' },
+    { name: 'MongoDB', icon: '🍃' },
+    // Cloud & DevOps
+    { name: 'Azure', icon: '☁️' },
+    { name: 'AWS', icon: '🔶' },
     { name: 'Docker', icon: '🐳' },
-    { name: 'Git', icon: '📊' },
-    { name: 'AWS', icon: '☁️' },
-    { name: 'TensorFlow', icon: '🧠' },
+    { name: 'GitHub Actions', icon: '⚙️' },
+    { name: 'CI/CD', icon: '🔄' },
+    // Data & Visualization
+    { name: 'D3.js', icon: '📊' },
+    { name: 'Three.js', icon: '🎮' },
+    { name: 'HuggingFace', icon: '🤗' },
+    // Tools & Methodologies
+    { name: 'Git', icon: '📚' },
+    { name: 'Linux', icon: '🐧' },
+    { name: 'Bash', icon: '💻' },
+    { name: 'VMs', icon: '🖥️' },
+    // Architecture & Security
+    { name: 'SCRUM', icon: '🏃' },
+    { name: 'C4 Model', icon: '📐' },
+    { name: 'Cybersecurity', icon: '🔐' },
+    { name: 'Assembly', icon: '⚡' },
   ];
 
   return (

@@ -45,11 +45,11 @@ const Footer = () => {
             <h3 className="font-semibold text-white mb-4">Contacto</h3>
             <div className="space-y-3">
               <a 
-                href="mailto:andersson.sanchez@mail.escuelaing.edu.co"
+                href="mailto:anderssondavidsanchez@gmail.com"
                 className="flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors text-sm"
               >
                 <Mail className="w-4 h-4" />
-                andersson.sanchez@mail.escuelaing.edu.co
+                anderssondavidsanchez@gmail.com
               </a>
               <a 
                 href="https://github.com/AnderssonProgramming"
@@ -61,7 +61,7 @@ const Footer = () => {
                 GitHub
               </a>
               <a 
-                href="https://www.linkedin.com/in/andersson-david-sanchez-mendez/"
+                href="https://www.linkedin.com/in/andersson-david-sánchez-méndez-676b72194"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors text-sm"
@@ -76,7 +76,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-sm">
-            © {currentYear} Andersson David Sanchez Mendez. Todos los derechos reservados.
+            © {currentYear} Andersson David Sánchez Méndez. Todos los derechos reservados.
           </p>
           <p className="text-gray-500 text-sm flex items-center gap-1">
             Hecho con <Heart className="w-4 h-4 text-red-500 fill-current" /> y React

@@ -167,7 +167,7 @@ const Home = () => {
                 <Github className="w-6 h-6" />
               </a>
               <a 
-                href="https://www.linkedin.com/in/andersson-david-sanchez-mendez/" 
+                href="https://www.linkedin.com/in/andersson-david-sánchez-méndez-676b72194" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-3 bg-gray-800/50 hover:bg-blue-600 rounded-xl transition-all duration-300 hover:scale-110"
@@ -176,7 +176,7 @@ const Home = () => {
                 <Linkedin className="w-6 h-6" />
               </a>
               <a 
-                href="mailto:andersson.sanchez@mail.escuelaing.edu.co"
+                href="mailto:anderssondavidsanchez@gmail.com"
                 className="p-3 bg-gray-800/50 hover:bg-gray-700 rounded-xl transition-all duration-300 hover:scale-110"
                 aria-label="Email"
               >
@@ -212,9 +212,9 @@ const Home = () => {
                 <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Mí</span>
               </h2>
               <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-                Estudiante de Ingeniería de Sistemas y <strong className="text-blue-400">Finalista Global en NASA Space Apps Challenge (Top 45)</strong>. 
-                Desarrollador Full-Stack experto en Java, React y Machine Learning (CNN) con enfoque en automatización CI/CD. 
-                Especialista en transformar retos complejos en soluciones escalables e innovadoras bajo metodologías ágiles.
+                Estudiante de Ingeniería de Sistemas bilingüe y <strong className="text-blue-400">Finalista Global en NASA Space Apps Challenge</strong>. 
+                Desarrollador Full-Stack con experiencia en Machine Learning (CNN), Java (Spring Boot), React y automatización CI/CD. 
+                Me distingo por convertir sólidos fundamentos técnicos en soluciones innovadoras y escalables, trabajando bajo metodologías ágiles.
               </p>
             </motion.div>
 
@@ -304,7 +304,7 @@ const Home = () => {
                 Descargar CV
               </Link>
               <a 
-                href="mailto:andersson.sanchez@mail.escuelaing.edu.co"
+                href="mailto:anderssondavidsanchez@gmail.com"
                 className="flex items-center justify-center gap-2 px-8 py-4 border border-gray-600 hover:border-white rounded-xl font-semibold transition-all duration-300"
               >
                 <Mail className="w-5 h-5" />
