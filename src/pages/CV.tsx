@@ -316,7 +316,7 @@ const CV = () => {
               </section>
 
               {/* Achievements */}
-              <section className="mb-6">
+              <section className="mb-4">
                 <h2 className="text-sm font-bold text-[#1e40af] uppercase tracking-wider mb-3 border-b-2 border-gray-200 pb-1">
                   Logros Destacados
                 </h2>
@@ -326,6 +326,62 @@ const CV = () => {
                   <div>
                     <h3 className="font-bold text-gray-900 text-sm">NASA Space Apps Challenge - Finalista Global</h3>
                     <p className="text-xs text-gray-700">Top 45 a nivel mundial entre miles de equipos participantes.</p>
+                  </div>
+                </div>
+              </section>
+
+              {/* Courses & Certifications */}
+              <section className="mb-4">
+                <h2 className="text-sm font-bold text-[#1e40af] uppercase tracking-wider mb-3 border-b-2 border-gray-200 pb-1">
+                  Cursos y Certificaciones
+                </h2>
+                
+                <div className="space-y-2">
+                  {/* Cloud Certifications */}
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="bg-blue-50 p-2 rounded-lg border border-blue-100">
+                      <div className="flex items-center gap-1 mb-1">
+                        <span className="text-xs">☁️</span>
+                        <span className="text-[10px] font-bold text-gray-900">Google Cloud Foundations</span>
+                      </div>
+                      <p className="text-[9px] text-gray-500">Google • Jul 2025</p>
+                    </div>
+                    <div className="bg-orange-50 p-2 rounded-lg border border-orange-100">
+                      <div className="flex items-center gap-1 mb-1">
+                        <span className="text-xs">🔶</span>
+                        <span className="text-[10px] font-bold text-gray-900">AWS Cloud Architecting</span>
+                      </div>
+                      <p className="text-[9px] text-gray-500">AWS Academy • May 2025</p>
+                    </div>
+                  </div>
+                  
+                  {/* Database Certifications - Compact */}
+                  <div className="bg-gray-50 p-2 rounded-lg">
+                    <div className="flex items-center gap-1 mb-1">
+                      <span className="text-xs">🗄️</span>
+                      <span className="text-[10px] font-bold text-gray-900">Databases (4 certificaciones)</span>
+                      <span className="text-[9px] text-gray-500 ml-auto">edX • Jul 2024</span>
+                    </div>
+                    <p className="text-[9px] text-gray-600">Advanced SQL, Modeling & Theory, Relational Databases, Semistructured Data</p>
+                  </div>
+                  
+                  {/* Programming & Data Science */}
+                  <div className="grid grid-cols-3 gap-2">
+                    <div className="bg-gray-50 p-2 rounded-lg text-center">
+                      <span className="text-xs">🐍</span>
+                      <p className="text-[9px] font-bold text-gray-900">Python CS</p>
+                      <p className="text-[8px] text-gray-500">edX • 2024</p>
+                    </div>
+                    <div className="bg-gray-50 p-2 rounded-lg text-center">
+                      <span className="text-xs">📊</span>
+                      <p className="text-[9px] font-bold text-gray-900">Data Science</p>
+                      <p className="text-[8px] text-gray-500">MinTIC</p>
+                    </div>
+                    <div className="bg-gray-50 p-2 rounded-lg text-center">
+                      <span className="text-xs">💻</span>
+                      <p className="text-[9px] font-bold text-gray-900">JavaScript</p>
+                      <p className="text-[8px] text-gray-500">MinTIC</p>
+                    </div>
                   </div>
                 </div>
               </section>
