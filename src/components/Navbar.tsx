@@ -22,10 +22,8 @@ const Navbar = () => {
     { name: 'CV', href: '/cv', isScroll: false },
   ];
 
-  const handleNavClick = (link: { name: string; href: string; isScroll: boolean }) => {
-    if (link.isScroll) {
-      document.getElementById(link.href)?.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleNavClick = (href: string) => {
+    document.getElementById(href)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -58,7 +56,7 @@ const Navbar = () => {
               link.isScroll ? (
                 <button
                   key={link.name}
-                  onClick={() => handleNavClick(link)}
+                  onClick={() => handleNavClick(link.href)}
                   className="text-sm font-medium transition-colors hover:text-blue-400 text-gray-300"
                 >
                   {link.name}
