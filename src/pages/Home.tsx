@@ -35,33 +35,44 @@ const Home = () => {
 
   const projects = [
     {
-      title: "NASA Space Apps Challenge - Global Finalist",
-      description: "Proyecto finalista global (Top 45 mundial) en el NASA Space Apps Challenge. Solución innovadora utilizando Machine Learning y datos espaciales de la NASA.",
-      tags: ["Python", "Machine Learning", "CNN", "NASA APIs", "React"],
+      title: "ECI-Centauri | NASA Space Apps 2025",
+      description: "Sistema de detección de exoplanetas con IA. Interfaz web con visualización 3D de planetas, curvas de luz interactivas, chatbot con Claude AI y predicciones en tiempo real. Backend FastAPI con autenticación JWT y modelo CNN entrenado con datos de Kepler y TESS.",
+      tags: ["React", "TypeScript", "FastAPI", "TensorFlow", "PostgreSQL", "Three.js"],
       image: "🚀",
-      link: "#",
+      links: [
+        { name: "Frontend", url: "https://github.com/JAPV-X2612/ECI-Centauri-Frontend" },
+        { name: "Backend", url: "https://github.com/JAPV-X2612/ECI-Centauri-Backend" },
+        { name: "ML Model", url: "https://github.com/Ch0comilo/astronet-cnn-v3" }
+      ],
       featured: true
     },
     {
-      title: "Sistema de Gestión Académica",
-      description: "Plataforma full-stack para gestión académica con Spring Boot y React. Implementación de arquitectura de microservicios y CI/CD.",
-      tags: ["Java", "Spring Boot", "React", "PostgreSQL", "Docker"],
-      image: "📚",
-      link: "#"
+      title: "POOB vs Zombies",
+      description: "Juego tower defense inspirado en Plants vs Zombies, desarrollado en Java para el curso POOB. Incluye partidas con IA (PvE, PvP, Machine vs Machine), gameplay en tiempo real con threads, guardado/carga de partidas y manejo de recursos.",
+      tags: ["Java", "POO", "Threads", "Swing", "Game Dev"],
+      image: "🎮",
+      links: [
+        { name: "Repositorio", url: "https://github.com/AnderssonProgramming/POOB-VS-Zombies" }
+      ]
     },
     {
-      title: "API REST con Arquitectura Limpia",
-      description: "API robusta siguiendo principios SOLID y Clean Architecture. Testing completo con JUnit y integración continua.",
-      tags: ["Java", "Spring", "JUnit", "Maven", "GitHub Actions"],
-      image: "⚡",
-      link: "#"
+      title: "Gender Quest | Plataforma Educativa",
+      description: "Plataforma educativa interactiva sobre roles de género e igualdad. Desarrollada con Next.js, NestJS y Supabase. Usa gamificación, IA y entornos 3D para enseñar a través de quizzes, chatbots y aprendizaje multimedia.",
+      tags: ["Next.js", "NestJS", "Supabase", "AI", "3D", "Gamification"],
+      image: "🎓",
+      links: [
+        { name: "Repositorio", url: "https://github.com/AnderssonProgramming/psoc-genericR-culturalC" }
+      ]
     },
     {
-      title: "Dashboard de Análisis de Datos",
-      description: "Visualización interactiva de datos con React y D3.js. Conexión a bases de datos en tiempo real.",
-      tags: ["React", "TypeScript", "D3.js", "Node.js", "MongoDB"],
-      image: "📊",
-      link: "#"
+      title: "Elysium | Sistema de Reservas",
+      description: "Sistema de reservas de laboratorios para la Escuela Colombiana de Ingeniería. Frontend React con D3.js para visualización, Backend Spring Boot con MongoDB. Incluye autenticación JWT, CI/CD con Azure y documentación Swagger.",
+      tags: ["React", "Spring Boot", "MongoDB", "D3.js", "Azure", "JWT"],
+      image: "📅",
+      links: [
+        { name: "Frontend", url: "https://github.com/AnderssonProgramming/Elysium-Front-React" },
+        { name: "Backend", url: "https://github.com/LePeanutButter/elysium-back" }
+      ]
     }
   ];
 
@@ -142,12 +153,12 @@ const Home = () => {
                 <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
               </Link>
               
-              <a 
-                href="#projects"
+              <button 
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                 className="flex items-center gap-2 px-8 py-4 border border-gray-700 hover:border-blue-500 rounded-xl font-semibold transition-all duration-300 hover:bg-blue-500/10"
               >
                 Ver Proyectos
-              </a>
+              </button>
             </motion.div>
 
             {/* Social Links */}
@@ -259,7 +270,7 @@ const Home = () => {
                 <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Destacados</span>
               </h2>
               <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                Una selección de mis proyectos más relevantes, desde competencias globales hasta aplicaciones empresariales.
+                Una selección de mis proyectos más relevantes: desde el NASA Space Apps Challenge hasta sistemas empresariales y videojuegos.
               </p>
             </motion.div>
 
@@ -267,11 +278,28 @@ const Home = () => {
               className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto"
               variants={staggerContainer}
             >
-              {projects.map((project, index) => (
-                <motion.div key={index} variants={fadeInUp}>
+              {projects.map((project) => (
+                <motion.div key={`project-${project.title}`} variants={fadeInUp}>
                   <ProjectCard {...project} />
                 </motion.div>
               ))}
+            </motion.div>
+
+            {/* View All Projects Link */}
+            <motion.div 
+              variants={fadeInUp}
+              className="text-center mt-12"
+            >
+              <a 
+                href="https://github.com/AnderssonProgramming?tab=repositories"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 border border-gray-700 hover:border-blue-500 rounded-xl text-gray-400 hover:text-white transition-all duration-300 hover:bg-blue-500/10"
+              >
+                <Github className="w-5 h-5" />
+                Ver todos mis proyectos en GitHub
+                <ExternalLink className="w-4 h-4" />
+              </a>
             </motion.div>
           </motion.div>
         </div>

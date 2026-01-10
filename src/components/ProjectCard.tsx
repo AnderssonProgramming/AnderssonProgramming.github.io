@@ -1,15 +1,20 @@
-import { ExternalLink, Github } from 'lucide-react';
+import { Github } from 'lucide-react';
+
+interface ProjectLink {
+  name: string;
+  url: string;
+}
 
 interface ProjectCardProps {
   title: string;
   description: string;
   tags: string[];
   image: string;
-  link: string;
+  links: ProjectLink[];
   featured?: boolean;
 }
 
-const ProjectCard = ({ title, description, tags, image, link, featured }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, tags, image, links, featured }: ProjectCardProps) => {
   return (
     <div 
       className={`group relative overflow-hidden rounded-2xl border transition-all duration-500 hover:scale-[1.02] ${
@@ -20,8 +25,8 @@ const ProjectCard = ({ title, description, tags, image, link, featured }: Projec
     >
       {/* Featured Badge */}
       {featured && (
-        <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-blue-500 rounded-full text-xs font-semibold">
-          ⭐ Destacado
+        <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full text-xs font-semibold">
+          🏆 NASA Global Finalist
         </div>
       )}
 
@@ -42,9 +47,9 @@ const ProjectCard = ({ title, description, tags, image, link, featured }: Projec
 
         {/* Tags */}
         <div className="flex flex-wrap gap-2 mb-6">
-          {tags.map((tag, index) => (
+          {tags.map((tag) => (
             <span 
-              key={index}
+              key={`tag-${tag}`}
               className="px-2 py-1 bg-gray-800 rounded-md text-xs text-gray-400"
             >
               {tag}
@@ -53,21 +58,19 @@ const ProjectCard = ({ title, description, tags, image, link, featured }: Projec
         </div>
 
         {/* Links */}
-        <div className="flex items-center gap-4">
-          <a 
-            href={link}
-            className="flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 transition-colors"
-          >
-            <ExternalLink className="w-4 h-4" />
-            Ver proyecto
-          </a>
-          <a 
-            href={link}
-            className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-300 transition-colors"
-          >
-            <Github className="w-4 h-4" />
-            Código
-          </a>
+        <div className="flex flex-wrap items-center gap-3">
+          {links.map((link) => (
+            <a 
+              key={`link-${link.name}`}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-800 hover:bg-blue-600 rounded-lg text-xs text-gray-300 hover:text-white transition-all duration-300"
+            >
+              <Github className="w-3.5 h-3.5" />
+              {link.name}
+            </a>
+          ))}
         </div>
       </div>
 

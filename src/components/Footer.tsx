@@ -31,10 +31,13 @@ const Footer = () => {
               <a href="/" className="block text-gray-400 hover:text-blue-400 transition-colors text-sm">
                 Inicio
               </a>
-              <a href="#projects" className="block text-gray-400 hover:text-blue-400 transition-colors text-sm">
+              <button 
+                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                className="block text-gray-400 hover:text-blue-400 transition-colors text-sm"
+              >
                 Proyectos
-              </a>
-              <a href="/cv" className="block text-gray-400 hover:text-blue-400 transition-colors text-sm">
+              </button>
+              <a href="/#/cv" className="block text-gray-400 hover:text-blue-400 transition-colors text-sm">
                 CV Profesional
               </a>
             </div>

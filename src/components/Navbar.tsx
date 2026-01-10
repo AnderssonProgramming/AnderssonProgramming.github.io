@@ -17,10 +17,16 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Inicio', href: '/' },
-    { name: 'Proyectos', href: '/#projects' },
-    { name: 'CV', href: '/cv' },
+    { name: 'Inicio', href: '/', isScroll: false },
+    { name: 'Proyectos', href: 'projects', isScroll: true },
+    { name: 'CV', href: '/cv', isScroll: false },
   ];
+
+  const handleNavClick = (link: { name: string; href: string; isScroll: boolean }) => {
+    if (link.isScroll) {
+      document.getElementById(link.href)?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <motion.nav
@@ -49,15 +55,25 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.href}
-                className={`text-sm font-medium transition-colors hover:text-blue-400 ${
-                  location.pathname === link.href ? 'text-blue-400' : 'text-gray-300'
-                }`}
-              >
-                {link.name}
-              </Link>
+              link.isScroll ? (
+                <button
+                  key={link.name}
+                  onClick={() => handleNavClick(link)}
+                  className="text-sm font-medium transition-colors hover:text-blue-400 text-gray-300"
+                >
+                  {link.name}
+                </button>
+              ) : (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className={`text-sm font-medium transition-colors hover:text-blue-400 ${
+                    location.pathname === link.href ? 'text-blue-400' : 'text-gray-300'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              )
             ))}
           </div>
 
@@ -107,16 +123,29 @@ const Navbar = () => {
             className="md:hidden py-4 border-t border-gray-800"
           >
             <div className="flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  to={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-gray-300 hover:text-blue-400 transition-colors py-2"
-                >
-                  {link.name}
-                </Link>
-              ))}
+              {navLinks.map((link) =>
+                link.isScroll ? (
+                  <button
+                    key={link.name}
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      handleNavClick(link.href);
+                    }}
+                    className="text-gray-300 hover:text-blue-400 transition-colors py-2 text-left"
+                  >
+                    {link.name}
+                  </button>
+                ) : (
+                  <Link
+                    key={link.name}
+                    to={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-gray-300 hover:text-blue-400 transition-colors py-2"
+                  >
+                    {link.name}
+                  </Link>
+                )
+              )}
               <div className="flex gap-4 pt-4 border-t border-gray-800">
                 <a
                   href="https://github.com/AnderssonProgramming"
