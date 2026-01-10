@@ -1,7 +1,9 @@
 import { Github, Linkedin, Mail, Heart } from 'lucide-react';
+import { useLanguage, en } from '../contexts/LanguageContext';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { isEnglish } = useLanguage();
 
   return (
     <footer className="bg-[#050508] border-t border-gray-800">
@@ -19,33 +21,32 @@ const Footer = () => {
               </span>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed">
-              Full-Stack Developer & Systems Engineering Student. 
-              NASA Space Apps Global Finalist.
+              {isEnglish ? en.footer.description : 'Full-Stack Developer & Systems Engineering Student. NASA Space Apps Global Finalist.'}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Enlaces Rápidos</h3>
+            <h3 className="font-semibold text-white mb-4">{isEnglish ? en.footer.quickLinks : 'Enlaces Rápidos'}</h3>
             <div className="space-y-2">
               <a href="/" className="block text-gray-400 hover:text-blue-400 transition-colors text-sm">
-                Inicio
+                {isEnglish ? en.nav.home : 'Inicio'}
               </a>
               <button 
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                 className="block text-gray-400 hover:text-blue-400 transition-colors text-sm"
               >
-                Proyectos
+                {isEnglish ? en.nav.projects : 'Proyectos'}
               </button>
               <a href="/#/cv" className="block text-gray-400 hover:text-blue-400 transition-colors text-sm">
-                CV Profesional
+                {isEnglish ? en.footer.professionalCV : 'CV Profesional'}
               </a>
             </div>
           </div>
 
           {/* Contact */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Contacto</h3>
+            <h3 className="font-semibold text-white mb-4">{isEnglish ? en.footer.contact : 'Contacto'}</h3>
             <div className="space-y-3">
               <a 
                 href="mailto:anderssondavidsanchez@gmail.com"
@@ -79,10 +80,10 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-sm">
-            © {currentYear} Andersson David Sánchez Méndez. Todos los derechos reservados.
+            © {currentYear} Andersson David Sánchez Méndez. {isEnglish ? en.footer.rights : 'Todos los derechos reservados.'}
           </p>
           <p className="text-gray-500 text-sm flex items-center gap-1">
-            Hecho con <Heart className="w-4 h-4 text-red-500 fill-current" /> y React
+            {isEnglish ? en.footer.madeWith : 'Hecho con'} <Heart className="w-4 h-4 text-red-500 fill-current" /> {isEnglish ? 'and React' : 'y React'}
           </p>
         </div>
       </div>

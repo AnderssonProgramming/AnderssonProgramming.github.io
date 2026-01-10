@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
+import { useLanguage, en } from '../contexts/LanguageContext';
 
 const TechStack = () => {
+  const { isEnglish } = useLanguage();
   const technologies = [
     // Web Development
     { name: 'Java', icon: '☕' },
@@ -44,7 +46,7 @@ const TechStack = () => {
           viewport={{ once: true }}
         >
           <p className="text-gray-500 uppercase tracking-widest text-sm">
-            Tecnologías que domino
+            {isEnglish ? en.techstack.title : 'Tecnologías que domino'}
           </p>
         </motion.div>
 

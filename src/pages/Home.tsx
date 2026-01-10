@@ -17,8 +17,10 @@ import Navbar from '../components/Navbar';
 import ProjectCard from '../components/ProjectCard';
 import TechStack from '../components/TechStack';
 import Footer from '../components/Footer';
+import { useLanguage, en } from '../contexts/LanguageContext';
 
 const Home = () => {
+  const { isEnglish } = useLanguage();
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
@@ -33,7 +35,48 @@ const Home = () => {
     }
   };
 
-  const projects = [
+  const projects = isEnglish ? [
+    {
+      title: en.projects.items[0].title,
+      description: en.projects.items[0].description,
+      tags: ["React", "TypeScript", "FastAPI", "TensorFlow", "PostgreSQL", "Three.js"],
+      image: "🚀",
+      links: [
+        { name: "Frontend", url: "https://github.com/JAPV-X2612/ECI-Centauri-Frontend" },
+        { name: "Backend", url: "https://github.com/JAPV-X2612/ECI-Centauri-Backend" },
+        { name: "ML Model", url: "https://github.com/Ch0comilo/astronet-cnn-v3" }
+      ],
+      featured: true
+    },
+    {
+      title: en.projects.items[1].title,
+      description: en.projects.items[1].description,
+      tags: ["Java", "OOP", "Threads", "Swing", "Game Dev"],
+      image: "🎮",
+      links: [
+        { name: "Repository", url: "https://github.com/AnderssonProgramming/POOB-VS-Zombies" }
+      ]
+    },
+    {
+      title: en.projects.items[2].title,
+      description: en.projects.items[2].description,
+      tags: ["Next.js", "NestJS", "Supabase", "AI", "3D", "Gamification"],
+      image: "🎓",
+      links: [
+        { name: "Repository", url: "https://github.com/AnderssonProgramming/psoc-genericR-culturalC" }
+      ]
+    },
+    {
+      title: en.projects.items[3].title,
+      description: en.projects.items[3].description,
+      tags: ["React", "Spring Boot", "MongoDB", "D3.js", "Azure", "JWT"],
+      image: "📅",
+      links: [
+        { name: "Frontend", url: "https://github.com/AnderssonProgramming/Elysium-Front-React" },
+        { name: "Backend", url: "https://github.com/LePeanutButter/elysium-back" }
+      ]
+    }
+  ] : [
     {
       title: "ECI-Centauri | NASA Space Apps 2025",
       description: "Sistema de detección de exoplanetas con IA. Interfaz web con visualización 3D de planetas, curvas de luz interactivas, chatbot con Claude AI y predicciones en tiempo real. Backend FastAPI con autenticación JWT y modelo CNN entrenado con datos de Kepler y TESS.",
@@ -76,7 +119,12 @@ const Home = () => {
     }
   ];
 
-  const skills = [
+  const skills = isEnglish ? [
+    { icon: <Code2 className="w-8 h-8" />, name: en.skills.items[0].name, description: en.skills.items[0].description },
+    { icon: <Cpu className="w-8 h-8" />, name: en.skills.items[1].name, description: en.skills.items[1].description },
+    { icon: <Database className="w-8 h-8" />, name: en.skills.items[2].name, description: en.skills.items[2].description },
+    { icon: <Shield className="w-8 h-8" />, name: en.skills.items[3].name, description: en.skills.items[3].description }
+  ] : [
     { icon: <Code2 className="w-8 h-8" />, name: "Full-Stack Development", description: "Java, Spring Boot, React, TypeScript" },
     { icon: <Cpu className="w-8 h-8" />, name: "Machine Learning", description: "CNN, TensorFlow, Data Science" },
     { icon: <Database className="w-8 h-8" />, name: "Bases de Datos", description: "PostgreSQL, MongoDB, Oracle" },
@@ -108,7 +156,9 @@ const Home = () => {
               transition={{ delay: 0.2 }}
             >
               <Rocket className="w-4 h-4 text-blue-400" />
-              <span className="text-blue-400 text-sm font-medium">NASA Space Apps Global Finalist</span>
+              <span className="text-blue-400 text-sm font-medium">
+                {isEnglish ? en.hero.badge : 'NASA Space Apps Global Finalist'}
+              </span>
             </motion.div>
 
             {/* Name */}
@@ -134,7 +184,7 @@ const Home = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
             >
-              Full-Stack Developer & Systems Engineering Student
+              {isEnglish ? en.hero.subtitle : 'Full-Stack Developer & Systems Engineering Student'}
             </motion.p>
 
             {/* CTA Buttons */}
@@ -149,7 +199,7 @@ const Home = () => {
                 className="group flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 glow"
               >
                 <Download className="w-5 h-5" />
-                Ver CV Profesional
+                {isEnglish ? en.hero.viewCV : 'Ver CV Profesional'}
                 <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
               </Link>
               
@@ -157,7 +207,7 @@ const Home = () => {
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
                 className="flex items-center gap-2 px-8 py-4 border border-gray-700 hover:border-blue-500 rounded-xl font-semibold transition-all duration-300 hover:bg-blue-500/10"
               >
-                Ver Proyectos
+                {isEnglish ? en.hero.viewProjects : 'Ver Proyectos'}
               </button>
             </motion.div>
 
@@ -219,13 +269,23 @@ const Home = () => {
           >
             <motion.div variants={fadeInUp} className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                <span className="text-gray-400">Sobre</span>{' '}
-                <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Mí</span>
+                <span className="text-gray-400">{isEnglish ? en.about.titlePrefix : 'Sobre'}</span>{' '}
+                <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">{isEnglish ? en.about.titleSuffix : 'Mí'}</span>
               </h2>
               <p className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed">
-                Estudiante de Ingeniería de Sistemas bilingüe y <strong className="text-blue-400">Finalista Global en NASA Space Apps Challenge</strong>. 
-                Desarrollador Full-Stack con experiencia en Machine Learning (CNN), Java (Spring Boot), React y automatización CI/CD. 
-                Me distingo por convertir sólidos fundamentos técnicos en soluciones innovadoras y escalables, trabajando bajo metodologías ágiles.
+                {isEnglish ? (
+                  <>
+                    {en.about.description.split('NASA Space Apps Challenge Global Finalist')[0]}
+                    <strong className="text-blue-400">NASA Space Apps Challenge Global Finalist</strong>
+                    {en.about.description.split('NASA Space Apps Challenge Global Finalist')[1]}
+                  </>
+                ) : (
+                  <>
+                    Estudiante de Ingeniería de Sistemas bilingüe y <strong className="text-blue-400">Finalista Global en NASA Space Apps Challenge</strong>. 
+                    Desarrollador Full-Stack con experiencia en Machine Learning (CNN), Java (Spring Boot), React y automatización CI/CD. 
+                    Me distingo por convertir sólidos fundamentos técnicos en soluciones innovadoras y escalables, trabajando bajo metodologías ágiles.
+                  </>
+                )}
               </p>
             </motion.div>
 
@@ -266,11 +326,11 @@ const Home = () => {
           >
             <motion.div variants={fadeInUp} className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                <span className="text-gray-400">Proyectos</span>{' '}
-                <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">Destacados</span>
+                <span className="text-gray-400">{isEnglish ? en.projects.titlePrefix : 'Proyectos'}</span>{' '}
+                <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">{isEnglish ? en.projects.titleSuffix : 'Destacados'}</span>
               </h2>
               <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-                Una selección de mis proyectos más relevantes: desde el NASA Space Apps Challenge hasta sistemas empresariales y videojuegos.
+                {isEnglish ? en.projects.subtitle : 'Una selección de mis proyectos más relevantes: desde el NASA Space Apps Challenge hasta sistemas empresariales y videojuegos.'}
               </p>
             </motion.div>
 
@@ -297,7 +357,7 @@ const Home = () => {
                 className="inline-flex items-center gap-2 px-6 py-3 border border-gray-700 hover:border-blue-500 rounded-xl text-gray-400 hover:text-white transition-all duration-300 hover:bg-blue-500/10"
               >
                 <Github className="w-5 h-5" />
-                Ver todos mis proyectos en GitHub
+                {isEnglish ? en.projects.viewAll : 'Ver todos mis proyectos en GitHub'}
                 <ExternalLink className="w-4 h-4" />
               </a>
             </motion.div>
@@ -317,11 +377,10 @@ const Home = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              ¿Listo para colaborar?
+              {isEnglish ? en.cta.title : '¿Listo para colaborar?'}
             </h2>
             <p className="text-gray-400 text-lg mb-8">
-              Estoy abierto a nuevas oportunidades y proyectos desafiantes. 
-              Descarga mi CV o contáctame directamente.
+              {isEnglish ? en.cta.subtitle : 'Estoy abierto a nuevas oportunidades y proyectos desafiantes. Descarga mi CV o contáctame directamente.'}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
@@ -329,14 +388,14 @@ const Home = () => {
                 className="flex items-center justify-center gap-2 px-8 py-4 bg-white text-black hover:bg-gray-100 rounded-xl font-semibold transition-all duration-300"
               >
                 <Download className="w-5 h-5" />
-                Descargar CV
+                {isEnglish ? en.cta.downloadCV : 'Descargar CV'}
               </Link>
               <a 
                 href="mailto:anderssondavidsanchez@gmail.com"
                 className="flex items-center justify-center gap-2 px-8 py-4 border border-gray-600 hover:border-white rounded-xl font-semibold transition-all duration-300"
               >
                 <Mail className="w-5 h-5" />
-                Contactar
+                {isEnglish ? en.cta.contact : 'Contactar'}
               </a>
             </div>
           </motion.div>

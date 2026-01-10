@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X, Github, Linkedin } from 'lucide-react';
+import { useLanguage, en } from '../contexts/LanguageContext';
+import LanguageSelector from './LanguageSelector';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const { isEnglish } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,8 +20,8 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Inicio', href: '/', isScroll: false },
-    { name: 'Proyectos', href: 'projects', isScroll: true },
+    { name: isEnglish ? en.nav.home : 'Inicio', href: '/', isScroll: false },
+    { name: isEnglish ? en.nav.projects : 'Proyectos', href: 'projects', isScroll: true },
     { name: 'CV', href: '/cv', isScroll: false },
   ];
 
@@ -77,6 +80,7 @@ const Navbar = () => {
 
           {/* Social Links */}
           <div className="hidden md:flex items-center gap-4">
+            <LanguageSelector />
             <a
               href="https://github.com/AnderssonProgramming"
               target="_blank"
@@ -99,7 +103,7 @@ const Navbar = () => {
               to="/cv"
               className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-medium transition-colors"
             >
-              Ver CV
+              {isEnglish ? en.nav.viewCV : 'Ver CV'}
             </Link>
           </div>
 
