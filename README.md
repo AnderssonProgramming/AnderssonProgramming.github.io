@@ -10,7 +10,7 @@
 
 <br/>
 
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=24&duration=4000&pause=1000&color=3B82F6&center=true&vCenter=true&multiline=true&random=false&width=500&height=80&lines=NASA+Space+Apps+Global+Finalist;Full-Stack+Developer+%7C+ML+Enthusiast" alt="Typing SVG" /></a>
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=3B82F6&center=true&vCenter=true&random=false&width=600&lines=NASA+Space+Apps+Global+Finalist;Full-Stack+Developer;Machine+Learning+Enthusiast" alt="Typing SVG" /></a>
 
 <br/>
 
