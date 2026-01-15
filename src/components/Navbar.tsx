@@ -101,7 +101,7 @@ const Navbar = () => {
               <Github className="w-5 h-5" />
             </a>
             <a
-              href="https://www.linkedin.com/in/anderssonssm"
+              href="https://www.linkedin.com/in/anderssonsm"
               target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-gray-400 hover:text-blue-400 transition-colors"
@@ -182,7 +182,7 @@ const Navbar = () => {
                   <Github className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/anderssonssm"
+                  href="https://www.linkedin.com/in/anderssonsm"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 text-gray-400 hover:text-blue-400 transition-colors"

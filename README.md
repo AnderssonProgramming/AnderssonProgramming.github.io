@@ -5,7 +5,7 @@
 ### Full-Stack Developer & Systems Engineering Student
 
 [![Portfolio](https://img.shields.io/badge/🌐_Portfolio-Live-blue?style=for-the-badge)](https://anderssonprogramming.github.io)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anderssonssm)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anderssonsm)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AnderssonProgramming)
 
 <br/>
@@ -248,7 +248,7 @@ This project is automatically deployed to **GitHub Pages** using **GitHub Action
 
 [![Email](https://img.shields.io/badge/Email-anderssondavidsanchez@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:anderssondavidsanchez@gmail.com)
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Andersson_Sánchez-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anderssonssm)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Andersson_Sánchez-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anderssonsm)
 
 [![GitHub](https://img.shields.io/badge/GitHub-AnderssonProgramming-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AnderssonProgramming)
 
