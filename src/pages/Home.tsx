@@ -194,14 +194,16 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
             >
-              <Link 
-                to="/cv"
+              <a 
+                href="/CV - ANDERSSON D SANCHEZ M.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 glow"
               >
                 <Download className="w-5 h-5" />
                 {isEnglish ? en.hero.viewCV : 'Ver CV Profesional'}
                 <ExternalLink className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-              </Link>
+              </a>
               
               <button 
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
@@ -383,13 +385,15 @@ const Home = () => {
               {isEnglish ? en.cta.subtitle : 'Estoy abierto a nuevas oportunidades y proyectos desafiantes. Descarga mi CV o contáctame directamente.'}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                to="/cv"
+              <a 
+                href="/CV - ANDERSSON D SANCHEZ M.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 px-8 py-4 bg-white text-black hover:bg-gray-100 rounded-xl font-semibold transition-all duration-300"
               >
                 <Download className="w-5 h-5" />
                 {isEnglish ? en.cta.downloadCV : 'Descargar CV'}
-              </Link>
+              </a>
               <a 
                 href="mailto:anderssondavidsanchez@gmail.com"
                 className="flex items-center justify-center gap-2 px-8 py-4 border border-gray-600 hover:border-white rounded-xl font-semibold transition-all duration-300"

@@ -38,7 +38,12 @@ const Footer = () => {
               >
                 {isEnglish ? en.nav.projects : 'Proyectos'}
               </button>
-              <a href="/#/cv" className="block text-gray-400 hover:text-blue-400 transition-colors text-sm">
+              <a 
+                href="/CV - ANDERSSON D SANCHEZ M.pdf" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-gray-400 hover:text-blue-400 transition-colors text-sm"
+              >
                 {isEnglish ? en.footer.professionalCV : 'CV Profesional'}
               </a>
             </div>

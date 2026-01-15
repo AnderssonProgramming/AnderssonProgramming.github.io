@@ -20,9 +20,9 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: isEnglish ? en.nav.home : 'Inicio', href: '/', isScroll: false },
-    { name: isEnglish ? en.nav.projects : 'Proyectos', href: 'projects', isScroll: true },
-    { name: 'CV', href: '/cv', isScroll: false },
+    { name: isEnglish ? en.nav.home : 'Inicio', href: '/', isScroll: false, isExternal: false },
+    { name: isEnglish ? en.nav.projects : 'Proyectos', href: 'projects', isScroll: true, isExternal: false },
+    { name: 'CV', href: '/CV - ANDERSSON D SANCHEZ M.pdf', isScroll: false, isExternal: true },
   ];
 
   const handleNavClick = (href: string) => {
@@ -64,6 +64,16 @@ const Navbar = () => {
                 >
                   {link.name}
                 </button>
+              ) : link.isExternal ? (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-medium transition-colors hover:text-blue-400 text-gray-300"
+                >
+                  {link.name}
+                </a>
               ) : (
                 <Link
                   key={link.name}
@@ -99,12 +109,14 @@ const Navbar = () => {
             >
               <Linkedin className="w-5 h-5" />
             </a>
-            <Link
-              to="/cv"
+            <a
+              href="/CV - ANDERSSON D SANCHEZ M.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-medium transition-colors"
             >
               {isEnglish ? en.nav.viewCV : 'Ver CV'}
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -137,6 +149,17 @@ const Navbar = () => {
                   >
                     {link.name}
                   </button>
+                ) : link.isExternal ? (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-gray-300 hover:text-blue-400 transition-colors py-2"
+                  >
+                    {link.name}
+                  </a>
                 ) : (
                   <Link
                     key={link.name}
