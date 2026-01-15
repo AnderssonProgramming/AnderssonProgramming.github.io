@@ -266,8 +266,9 @@ const Home = () => {
             className="max-w-4xl mx-auto"
             initial="initial"
             whileInView="animate"
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.1 }}
             variants={staggerContainer}
+            key={isEnglish ? 'about-en' : 'about-es'}
           >
             <motion.div variants={fadeInUp} className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -323,8 +324,9 @@ const Home = () => {
           <motion.div
             initial="initial"
             whileInView="animate"
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.1 }}
             variants={staggerContainer}
+            key={isEnglish ? 'projects-en' : 'projects-es'}
           >
             <motion.div variants={fadeInUp} className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
@@ -340,8 +342,8 @@ const Home = () => {
               className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto"
               variants={staggerContainer}
             >
-              {projects.map((project) => (
-                <motion.div key={`project-${project.title}`} variants={fadeInUp}>
+              {projects.map((project, index) => (
+                <motion.div key={`project-${index}`} variants={fadeInUp}>
                   <ProjectCard {...project} />
                 </motion.div>
               ))}
@@ -375,8 +377,9 @@ const Home = () => {
             className="max-w-3xl mx-auto text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, amount: 0.1 }}
             transition={{ duration: 0.6 }}
+            key={isEnglish ? 'cta-en' : 'cta-es'}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               {isEnglish ? en.cta.title : '¿Listo para colaborar?'}

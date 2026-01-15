@@ -1,6 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Globe, Check } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 
 interface LanguageSelectorProps {
@@ -9,87 +7,37 @@ interface LanguageSelectorProps {
 
 const LanguageSelector = ({ variant = 'dark' }: LanguageSelectorProps) => {
   const { language, setLanguage } = useLanguage();
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const languages = [
-    { code: 'es' as const, name: 'Español', flag: '🇪🇸' },
-    { code: 'en' as const, name: 'English', flag: '🇺🇸' },
-  ];
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
-  const currentLanguage = languages.find(l => l.code === language);
+  const toggleLanguage = () => {
+    setLanguage(language === 'es' ? 'en' : 'es');
+  };
 
   const isDark = variant === 'dark';
+  const isEnglish = language === 'en';
 
   return (
-    <div className="relative" ref={dropdownRef}>
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-all duration-200 ${
-          isDark 
-            ? 'bg-gray-800/50 hover:bg-gray-700/50 border-gray-700 hover:border-gray-600' 
-            : 'bg-white/90 hover:bg-white border-gray-300 hover:border-blue-400'
-        }`}
-        aria-label="Select language"
+    <button
+      onClick={toggleLanguage}
+      className={`flex items-center gap-2 px-3 py-2 rounded-lg border transition-all duration-200 hover:scale-105 active:scale-95 ${
+        isDark 
+          ? 'bg-gray-800/50 hover:bg-gray-700/50 border-gray-700 hover:border-gray-600' 
+          : 'bg-white/90 hover:bg-white border-gray-300 hover:border-blue-400'
+      }`}
+      aria-label={isEnglish ? 'Switch to Spanish' : 'Cambiar a Inglés'}
+    >
+      <motion.span
+        key={language}
+        initial={{ rotateY: 90, opacity: 0 }}
+        animate={{ rotateY: 0, opacity: 1 }}
+        transition={{ duration: 0.2 }}
+        className="text-lg"
       >
-        <Globe className={`w-4 h-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`} />
-        <span className={`text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
-          {currentLanguage?.flag} {currentLanguage?.code.toUpperCase()}
-        </span>
-      </button>
-
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.95 }}
-            transition={{ duration: 0.15 }}
-            className={`absolute right-0 mt-2 w-40 border rounded-xl shadow-2xl overflow-hidden z-50 ${
-              isDark 
-                ? 'bg-[#1a1a24] border-gray-700' 
-                : 'bg-white border-gray-200'
-            }`}
-          >
-            {languages.map((lang) => (
-              <button
-                key={lang.code}
-                onClick={() => {
-                  setLanguage(lang.code);
-                  setIsOpen(false);
-                }}
-                className={`w-full flex items-center justify-between px-4 py-3 text-sm transition-colors ${
-                  language === lang.code
-                    ? 'bg-blue-600/20 text-blue-400'
-                    : isDark 
-                      ? 'text-gray-300 hover:bg-gray-800' 
-                      : 'text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                <span className="flex items-center gap-2">
-                  <span className="text-lg">{lang.flag}</span>
-                  <span>{lang.name}</span>
-                </span>
-                {language === lang.code && (
-                  <Check className="w-4 h-4 text-blue-400" />
-                )}
-              </button>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+        {isEnglish ? '🇺🇸' : '🇪🇸'}
+      </motion.span>
+      <span className={`text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+        {isEnglish ? 'EN' : 'ES'}
+      </span>
+    </button>
   );
 };
 
