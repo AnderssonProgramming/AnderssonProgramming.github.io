@@ -5,7 +5,7 @@
 ### Full-Stack Developer & Systems Engineering Student
 
 [![Portfolio](https://img.shields.io/badge/🌐_Portfolio-Live-blue?style=for-the-badge)](https://anderssonprogramming.github.io)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andersson-david-sánchez-méndez-676b72194)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anderssonssm)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AnderssonProgramming)
 
 <br/>
@@ -52,8 +52,8 @@ This is my **professional portfolio website** — a modern, responsive, and bili
 ### 🏠 Home Page
 *Hero section with gradient text, animated badge, and call-to-action buttons*
 
-### 📋 CV Page  
-*Professional two-column CV layout with print/PDF functionality*
+### � CV (PDF)
+*Professional CV available as downloadable PDF*
 
 ### 🌐 Language Selector
 *Elegant dropdown with flags for seamless language switching*
@@ -96,7 +96,8 @@ This is my **professional portfolio website** — a modern, responsive, and bili
 │   └── 📂 workflows/
 │       └── 📄 deploy.yml          # GitHub Actions CI/CD
 ├── 📂 public/
-│   └── 🖼️ profile.png             # Profile photo
+│   ├── 🖼️ profile.png             # Profile photo
+│   └── 📄 CV - ANDERSSON D SANCHEZ M.pdf # Professional CV
 ├── 📂 src/
 │   ├── 📂 components/
 │   │   ├── 📄 Footer.tsx          # Site footer
@@ -107,7 +108,6 @@ This is my **professional portfolio website** — a modern, responsive, and bili
 │   ├── 📂 contexts/
 │   │   └── 📄 LanguageContext.tsx # i18n context & translations
 │   ├── 📂 pages/
-│   │   ├── 📄 CV.tsx              # Professional CV page
 │   │   └── 📄 Home.tsx            # Landing page
 │   ├── 📄 App.tsx                 # Main app component
 │   ├── 📄 index.css               # Global styles
@@ -178,21 +178,14 @@ const { isEnglish } = useLanguage();
 
 ---
 
-## 📄 CV Features
+## 📄 CV / Resume
 
-The CV page includes:
+The CV is available as a **downloadable PDF** that opens in a new tab:
 
-- ✅ **Two-column professional layout**
-- ✅ **Print-optimized CSS** (Ctrl+P or Cmd+P)
-- ✅ **PDF export ready**
-- ✅ **Bilingual content**
-- ✅ **Contact information**
-- ✅ **Skills with progress bars**
-- ✅ **Work experience timeline**
-- ✅ **Education history**
-- ✅ **Certifications grid**
-- ✅ **Hobbies section with icons**
-- ✅ **References**
+- ✅ **Professional PDF format**
+- ✅ **Direct download/view in browser**
+- ✅ **Print-ready layout**
+- ✅ **Bilingual access from nav buttons**
 
 ---
 
@@ -255,7 +248,7 @@ This project is automatically deployed to **GitHub Pages** using **GitHub Action
 
 [![Email](https://img.shields.io/badge/Email-anderssondavidsanchez@gmail.com-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:anderssondavidsanchez@gmail.com)
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Andersson_Sánchez-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andersson-david-sánchez-méndez-676b72194)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Andersson_Sánchez-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anderssonssm)
 
 [![GitHub](https://img.shields.io/badge/GitHub-AnderssonProgramming-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AnderssonProgramming)
 

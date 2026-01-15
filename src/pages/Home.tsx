@@ -230,7 +230,7 @@ const Home = () => {
                 <Github className="w-6 h-6" />
               </a>
               <a 
-                href="https://www.linkedin.com/in/andersson-david-sánchez-méndez-676b72194" 
+                href="https://www.linkedin.com/in/anderssonssm" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="p-3 bg-gray-800/50 hover:bg-blue-600 rounded-xl transition-all duration-300 hover:scale-110"

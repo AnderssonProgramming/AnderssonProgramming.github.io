@@ -70,7 +70,7 @@ const Footer = () => {
                 GitHub
               </a>
               <a 
-                href="https://www.linkedin.com/in/andersson-david-sánchez-méndez-676b72194"
+                href="https://www.linkedin.com/in/anderssonssm"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors text-sm"
