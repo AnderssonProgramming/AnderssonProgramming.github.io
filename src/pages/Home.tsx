@@ -12,7 +12,6 @@ import {
   Cpu,
   ChevronDown
 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import ProjectCard from '../components/ProjectCard';
 import TechStack from '../components/TechStack';
