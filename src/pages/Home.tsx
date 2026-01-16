@@ -17,9 +17,11 @@ import ProjectCard from '../components/ProjectCard';
 import TechStack from '../components/TechStack';
 import Footer from '../components/Footer';
 import { useLanguage, en } from '../contexts/LanguageContext';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Home = () => {
   const { isEnglish } = useLanguage();
+  const { isDark } = useTheme();
   const fadeInUp = {
     initial: { opacity: 0, y: 60 },
     animate: { opacity: 1, y: 0 },
@@ -131,14 +133,20 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f] text-white overflow-x-hidden">
+    <div className={`min-h-screen overflow-x-hidden transition-colors duration-300 ${
+      isDark ? 'bg-[#0a0a0f] text-white' : 'bg-gray-50 text-gray-900'
+    }`}>
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-grid px-4 sm:px-6">
+      <section className={`relative min-h-screen flex items-center justify-center px-4 sm:px-6 ${isDark ? 'bg-grid' : 'bg-grid-light'}`}>
         {/* Gradient orbs - smaller on mobile */}
-        <div className="absolute top-1/4 left-1/4 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-purple-600/20 rounded-full blur-3xl"></div>
+        <div className={`absolute top-1/4 left-1/4 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 rounded-full blur-3xl ${
+          isDark ? 'bg-blue-600/20' : 'bg-blue-400/20'
+        }`}></div>
+        <div className={`absolute bottom-1/4 right-1/4 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 rounded-full blur-3xl ${
+          isDark ? 'bg-purple-600/20' : 'bg-purple-400/20'
+        }`}></div>
         
         <div className="container mx-auto px-4 sm:px-6 pt-24 sm:pt-20 relative z-10">
           <motion.div 
@@ -149,13 +157,17 @@ const Home = () => {
           >
             {/* Badge */}
             <motion.div 
-              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-6 sm:mb-8"
+              className={`inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-6 sm:mb-8 ${
+                isDark 
+                  ? 'bg-blue-500/10 border border-blue-500/20' 
+                  : 'bg-blue-100 border border-blue-200'
+              }`}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             >
-              <Rocket className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-400" />
-              <span className="text-blue-400 text-xs sm:text-sm font-medium">
+              <Rocket className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isDark ? 'text-blue-400' : 'text-blue-600'}`} />
+              <span className={`text-xs sm:text-sm font-medium ${isDark ? 'text-blue-400' : 'text-blue-700'}`}>
                 {isEnglish ? en.hero.badge : 'NASA Space Apps Global Finalist'}
               </span>
             </motion.div>
@@ -167,7 +179,11 @@ const Home = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <span className="block bg-gradient-to-r from-white via-blue-100 to-white bg-clip-text text-transparent pb-1 sm:pb-2">
+              <span className={`block bg-clip-text text-transparent pb-1 sm:pb-2 ${
+                isDark 
+                  ? 'bg-gradient-to-r from-white via-blue-100 to-white' 
+                  : 'bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900'
+              }`}>
                 ANDERSSON DAVID
               </span>
               <span className="block bg-gradient-to-r from-blue-400 via-blue-500 to-purple-500 bg-clip-text text-transparent animate-gradient">
@@ -177,7 +193,9 @@ const Home = () => {
 
             {/* Subtitle */}
             <motion.p 
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-400 mb-6 sm:mb-8 max-w-2xl mx-auto px-2"
+              className={`text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 max-w-2xl mx-auto px-2 ${
+                isDark ? 'text-gray-400' : 'text-gray-600'
+              }`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
@@ -196,7 +214,7 @@ const Home = () => {
                 href="/CV - ANDERSSON D SANCHEZ M.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-center gap-2 w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 rounded-xl font-semibold text-sm sm:text-base transition-all duration-300 transform hover:scale-105 glow"
+                className="group flex items-center justify-center gap-2 w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white rounded-xl font-semibold text-sm sm:text-base transition-all duration-300 transform hover:scale-105 glow"
               >
                 <Download className="w-4 h-4 sm:w-5 sm:h-5" />
                 {isEnglish ? en.hero.viewCV : 'Ver CV Profesional'}
@@ -205,7 +223,11 @@ const Home = () => {
               
               <button 
                 onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                className="flex items-center justify-center gap-2 w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border border-gray-700 hover:border-blue-500 rounded-xl font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-blue-500/10"
+                className={`flex items-center justify-center gap-2 w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border rounded-xl font-semibold text-sm sm:text-base transition-all duration-300 hover:bg-blue-500/10 ${
+                  isDark 
+                    ? 'border-gray-700 hover:border-blue-500' 
+                    : 'border-gray-300 hover:border-blue-500 text-gray-700'
+                }`}
               >
                 {isEnglish ? en.hero.viewProjects : 'Ver Proyectos'}
               </button>
@@ -222,26 +244,38 @@ const Home = () => {
                 href="https://github.com/AnderssonProgramming" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="p-2.5 sm:p-3 bg-gray-800/50 hover:bg-gray-700 rounded-xl transition-all duration-300 hover:scale-110"
+                className={`p-2.5 sm:p-3 rounded-xl transition-all duration-300 hover:scale-110 ${
+                  isDark 
+                    ? 'bg-gray-800/50 hover:bg-gray-700' 
+                    : 'bg-white shadow-md hover:bg-gray-100'
+                }`}
                 aria-label="GitHub"
               >
-                <Github className="w-5 h-5 sm:w-6 sm:h-6" />
+                <Github className={`w-5 h-5 sm:w-6 sm:h-6 ${isDark ? '' : 'text-gray-700'}`} />
               </a>
               <a 
                 href="https://www.linkedin.com/in/anderssonsm" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="p-2.5 sm:p-3 bg-gray-800/50 hover:bg-blue-600 rounded-xl transition-all duration-300 hover:scale-110"
+                className={`p-2.5 sm:p-3 rounded-xl transition-all duration-300 hover:scale-110 ${
+                  isDark 
+                    ? 'bg-gray-800/50 hover:bg-blue-600' 
+                    : 'bg-white shadow-md hover:bg-blue-600 hover:text-white'
+                }`}
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5 sm:w-6 sm:h-6" />
               </a>
               <a 
                 href="mailto:anderssondavidsanchez@gmail.com"
-                className="p-2.5 sm:p-3 bg-gray-800/50 hover:bg-gray-700 rounded-xl transition-all duration-300 hover:scale-110"
+                className={`p-2.5 sm:p-3 rounded-xl transition-all duration-300 hover:scale-110 ${
+                  isDark 
+                    ? 'bg-gray-800/50 hover:bg-gray-700' 
+                    : 'bg-white shadow-md hover:bg-gray-100'
+                }`}
                 aria-label="Email"
               >
-                <Mail className="w-5 h-5 sm:w-6 sm:h-6" />
+                <Mail className={`w-5 h-5 sm:w-6 sm:h-6 ${isDark ? '' : 'text-gray-700'}`} />
               </a>
             </motion.div>
           </motion.div>
@@ -252,7 +286,7 @@ const Home = () => {
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 2 }}
           >
-            <ChevronDown className="w-6 h-6 sm:w-8 sm:h-8 text-gray-500" />
+            <ChevronDown className={`w-6 h-6 sm:w-8 sm:h-8 ${isDark ? 'text-gray-500' : 'text-gray-400'}`} />
           </motion.div>
         </div>
       </section>
@@ -270,19 +304,19 @@ const Home = () => {
           >
             <motion.div variants={fadeInUp} className="text-center mb-10 sm:mb-16">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
-                <span className="text-gray-400">{isEnglish ? en.about.titlePrefix : 'Sobre'}</span>{' '}
+                <span className={isDark ? 'text-gray-400' : 'text-gray-500'}>{isEnglish ? en.about.titlePrefix : 'Sobre'}</span>{' '}
                 <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">{isEnglish ? en.about.titleSuffix : 'Mí'}</span>
               </h2>
-              <p className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed px-2">
+              <p className={`text-base sm:text-lg max-w-3xl mx-auto leading-relaxed px-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                 {isEnglish ? (
                   <>
                     {en.about.description.split('NASA Space Apps Challenge Global Finalist')[0]}
-                    <strong className="text-blue-400">NASA Space Apps Challenge Global Finalist</strong>
+                    <strong className={isDark ? 'text-blue-400' : 'text-blue-600'}>NASA Space Apps Challenge Global Finalist</strong>
                     {en.about.description.split('NASA Space Apps Challenge Global Finalist')[1]}
                   </>
                 ) : (
                   <>
-                    Estudiante de Ingeniería de Sistemas bilingüe y <strong className="text-blue-400">Finalista Global en NASA Space Apps Challenge</strong>. 
+                    Estudiante de Ingeniería de Sistemas bilingüe y <strong className={isDark ? 'text-blue-400' : 'text-blue-600'}>Finalista Global en NASA Space Apps Challenge</strong>. 
                     Desarrollador Full-Stack con experiencia en Machine Learning (CNN), Java (Spring Boot), React y automatización CI/CD. 
                     Me distingo por convertir sólidos fundamentos técnicos en soluciones innovadoras y escalables, trabajando bajo metodologías ágiles.
                   </>
@@ -299,13 +333,19 @@ const Home = () => {
                 <motion.div
                   key={index}
                   variants={fadeInUp}
-                  className="p-4 sm:p-6 bg-gray-900/50 border border-gray-800 rounded-2xl hover:border-blue-500/50 transition-all duration-300 group"
+                  className={`p-4 sm:p-6 border rounded-2xl transition-all duration-300 group ${
+                    isDark 
+                      ? 'bg-gray-900/50 border-gray-800 hover:border-blue-500/50' 
+                      : 'bg-white border-gray-200 hover:border-blue-400 shadow-sm hover:shadow-md'
+                  }`}
                 >
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-400 mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+                  <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center mb-3 sm:mb-4 group-hover:scale-110 transition-transform ${
+                    isDark ? 'bg-blue-500/10 text-blue-400' : 'bg-blue-100 text-blue-600'
+                  }`}>
                     {skill.icon}
                   </div>
-                  <h3 className="font-semibold text-base sm:text-lg mb-1 sm:mb-2">{skill.name}</h3>
-                  <p className="text-gray-500 text-xs sm:text-sm">{skill.description}</p>
+                  <h3 className={`font-semibold text-base sm:text-lg mb-1 sm:mb-2 ${isDark ? '' : 'text-gray-900'}`}>{skill.name}</h3>
+                  <p className={`text-xs sm:text-sm ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>{skill.description}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -328,10 +368,10 @@ const Home = () => {
           >
             <motion.div variants={fadeInUp} className="text-center mb-10 sm:mb-16">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
-                <span className="text-gray-400">{isEnglish ? en.projects.titlePrefix : 'Proyectos'}</span>{' '}
+                <span className={isDark ? 'text-gray-400' : 'text-gray-500'}>{isEnglish ? en.projects.titlePrefix : 'Proyectos'}</span>{' '}
                 <span className="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">{isEnglish ? en.projects.titleSuffix : 'Destacados'}</span>
               </h2>
-              <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto px-2">
+              <p className={`text-base sm:text-lg max-w-2xl mx-auto px-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
                 {isEnglish ? en.projects.subtitle : 'Una selección de mis proyectos más relevantes: desde el NASA Space Apps Challenge hasta sistemas empresariales y videojuegos.'}
               </p>
             </motion.div>
@@ -356,7 +396,11 @@ const Home = () => {
                 href="https://github.com/AnderssonProgramming?tab=repositories"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 border border-gray-700 hover:border-blue-500 rounded-xl text-gray-400 hover:text-white text-sm sm:text-base transition-all duration-300 hover:bg-blue-500/10"
+                className={`inline-flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 border rounded-xl text-sm sm:text-base transition-all duration-300 ${
+                  isDark 
+                    ? 'border-gray-700 hover:border-blue-500 text-gray-400 hover:text-white hover:bg-blue-500/10' 
+                    : 'border-gray-300 hover:border-blue-500 text-gray-600 hover:text-blue-600 hover:bg-blue-50'
+                }`}
               >
                 <Github className="w-4 h-4 sm:w-5 sm:h-5" />
                 {isEnglish ? en.projects.viewAll : 'Ver todos mis proyectos en GitHub'}
@@ -369,7 +413,7 @@ const Home = () => {
 
       {/* CTA Section */}
       <section className="py-16 sm:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
+        <div className={`absolute inset-0 ${isDark ? 'bg-gradient-to-r from-blue-600/10 to-purple-600/10' : 'bg-gradient-to-r from-blue-100 to-purple-100'}`}></div>
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <motion.div 
             className="max-w-3xl mx-auto text-center"
@@ -379,10 +423,10 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             key={isEnglish ? 'cta-en' : 'cta-es'}
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
+            <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>
               {isEnglish ? en.cta.title : '¿Listo para colaborar?'}
             </h2>
-            <p className="text-gray-400 text-base sm:text-lg mb-6 sm:mb-8 px-2">
+            <p className={`text-base sm:text-lg mb-6 sm:mb-8 px-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
               {isEnglish ? en.cta.subtitle : 'Estoy abierto a nuevas oportunidades y proyectos desafiantes. Descarga mi CV o contáctame directamente.'}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
@@ -390,14 +434,22 @@ const Home = () => {
                 href="/CV - ANDERSSON D SANCHEZ M.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-white text-black hover:bg-gray-100 rounded-xl font-semibold text-sm sm:text-base transition-all duration-300"
+                className={`flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-sm sm:text-base transition-all duration-300 ${
+                  isDark 
+                    ? 'bg-white text-black hover:bg-gray-100' 
+                    : 'bg-blue-600 text-white hover:bg-blue-700'
+                }`}
               >
                 <Download className="w-4 h-4 sm:w-5 sm:h-5" />
                 {isEnglish ? en.cta.downloadCV : 'Descargar CV'}
               </a>
               <a 
                 href="mailto:anderssondavidsanchez@gmail.com"
-                className="flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 border border-gray-600 hover:border-white rounded-xl font-semibold text-sm sm:text-base transition-all duration-300"
+                className={`flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 border rounded-xl font-semibold text-sm sm:text-base transition-all duration-300 ${
+                  isDark 
+                    ? 'border-gray-600 hover:border-white text-white' 
+                    : 'border-gray-400 hover:border-blue-600 text-gray-700 hover:text-blue-600'
+                }`}
               >
                 <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
                 {isEnglish ? en.cta.contact : 'Contactar'}

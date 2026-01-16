@@ -40,22 +40,40 @@
   }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
+/* Custom scrollbar - Dark mode */
+.dark ::-webkit-scrollbar {
   width: 8px;
 }
 
-::-webkit-scrollbar-track {
+.dark ::-webkit-scrollbar-track {
   background: #0a0a0f;
 }
 
-::-webkit-scrollbar-thumb {
+.dark ::-webkit-scrollbar-thumb {
   background: #3b82f6;
   border-radius: 4px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+.dark ::-webkit-scrollbar-thumb:hover {
   background: #60a5fa;
+}
+
+/* Custom scrollbar - Light mode */
+.light ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.light ::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 4px;
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
 }
 
 /* Gradient text animation */
@@ -79,10 +97,18 @@
               0 0 40px rgba(59, 130, 246, 0.1);
 }
 
-/* Grid background pattern */
+/* Grid background pattern - Dark mode */
 .bg-grid {
   background-image: 
     linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Grid background pattern - Light mode */
+.bg-grid-light {
+  background-image: 
+    linear-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
   background-size: 50px 50px;
 }

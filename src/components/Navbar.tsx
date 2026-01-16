@@ -3,13 +3,16 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X, Github, Linkedin } from 'lucide-react';
 import { useLanguage, en } from '../contexts/LanguageContext';
+import { useTheme } from '../contexts/ThemeContext';
 import LanguageSelector from './LanguageSelector';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const { isEnglish } = useLanguage();
+  const { isDark } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,7 +39,9 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-[#0a0a0f]/90 backdrop-blur-xl border-b border-gray-800' 
+          ? isDark 
+            ? 'bg-[#0a0a0f]/90 backdrop-blur-xl border-b border-gray-800' 
+            : 'bg-white/90 backdrop-blur-xl border-b border-gray-200 shadow-sm'
           : 'bg-transparent'
       }`}
     >
@@ -48,8 +53,8 @@ const Navbar = () => {
               AS
             </div>
             <span className="font-bold text-lg sm:text-xl hidden sm:block">
-              <span className="text-white">Andersson</span>
-              <span className="text-blue-400">.dev</span>
+              <span className={isDark ? 'text-white' : 'text-gray-900'}>Andersson</span>
+              <span className="text-blue-500">.dev</span>
             </span>
           </Link>
 
@@ -60,7 +65,9 @@ const Navbar = () => {
                 <button
                   key={link.name}
                   onClick={() => handleNavClick(link.href)}
-                  className="text-sm font-medium transition-colors hover:text-blue-400 text-gray-300"
+                  className={`text-sm font-medium transition-colors hover:text-blue-500 ${
+                    isDark ? 'text-gray-300' : 'text-gray-600'
+                  }`}
                 >
                   {link.name}
                 </button>
@@ -70,7 +77,9 @@ const Navbar = () => {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-medium transition-colors hover:text-blue-400 text-gray-300"
+                  className={`text-sm font-medium transition-colors hover:text-blue-500 ${
+                    isDark ? 'text-gray-300' : 'text-gray-600'
+                  }`}
                 >
                   {link.name}
                 </a>
@@ -78,8 +87,10 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`text-sm font-medium transition-colors hover:text-blue-400 ${
-                    location.pathname === link.href ? 'text-blue-400' : 'text-gray-300'
+                  className={`text-sm font-medium transition-colors hover:text-blue-500 ${
+                    location.pathname === link.href 
+                      ? 'text-blue-500' 
+                      : isDark ? 'text-gray-300' : 'text-gray-600'
                   }`}
                 >
                   {link.name}
@@ -88,14 +99,17 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Social Links */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* Social Links & Controls */}
+          <div className="hidden md:flex items-center gap-3">
             <LanguageSelector />
+            <ThemeToggle />
             <a
               href="https://github.com/AnderssonProgramming"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-gray-400 hover:text-white transition-colors"
+              className={`p-2 transition-colors ${
+                isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'
+              }`}
               aria-label="GitHub"
             >
               <Github className="w-5 h-5" />
@@ -104,7 +118,9 @@ const Navbar = () => {
               href="https://www.linkedin.com/in/anderssonsm"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-gray-400 hover:text-blue-400 transition-colors"
+              className={`p-2 transition-colors ${
+                isDark ? 'text-gray-400 hover:text-blue-400' : 'text-gray-500 hover:text-blue-600'
+              }`}
               aria-label="LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
@@ -113,19 +129,23 @@ const Navbar = () => {
               href="/CV - ANDERSSON D SANCHEZ M.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-medium transition-colors"
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-medium transition-colors"
             >
               {isEnglish ? en.nav.viewCV : 'Ver CV'}
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-gray-400"
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile Controls */}
+          <div className="flex md:hidden items-center gap-2">
+            <LanguageSelector />
+            <ThemeToggle />
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className={`p-2 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}
@@ -134,7 +154,7 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden py-4 border-t border-gray-800"
+            className={`md:hidden py-4 border-t ${isDark ? 'border-gray-800' : 'border-gray-200'}`}
           >
             <div className="flex flex-col gap-4">
               {navLinks.map((link) =>
@@ -145,7 +165,9 @@ const Navbar = () => {
                       setIsMobileMenuOpen(false);
                       handleNavClick(link.href);
                     }}
-                    className="text-gray-300 hover:text-blue-400 transition-colors py-2 text-left"
+                    className={`transition-colors py-2 text-left hover:text-blue-500 ${
+                      isDark ? 'text-gray-300' : 'text-gray-600'
+                    }`}
                   >
                     {link.name}
                   </button>
@@ -156,7 +178,9 @@ const Navbar = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-gray-300 hover:text-blue-400 transition-colors py-2"
+                    className={`transition-colors py-2 hover:text-blue-500 ${
+                      isDark ? 'text-gray-300' : 'text-gray-600'
+                    }`}
                   >
                     {link.name}
                   </a>
@@ -165,18 +189,22 @@ const Navbar = () => {
                     key={link.name}
                     to={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-gray-300 hover:text-blue-400 transition-colors py-2"
+                    className={`transition-colors py-2 hover:text-blue-500 ${
+                      isDark ? 'text-gray-300' : 'text-gray-600'
+                    }`}
                   >
                     {link.name}
                   </Link>
                 )
               )}
-              <div className="flex gap-4 pt-4 border-t border-gray-800">
+              <div className={`flex gap-4 pt-4 border-t ${isDark ? 'border-gray-800' : 'border-gray-200'}`}>
                 <a
                   href="https://github.com/AnderssonProgramming"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-gray-400 hover:text-white transition-colors"
+                  className={`p-2 transition-colors ${
+                    isDark ? 'text-gray-400 hover:text-white' : 'text-gray-500 hover:text-gray-900'
+                  }`}
                   aria-label="GitHub"
                 >
                   <Github className="w-5 h-5" />
@@ -185,7 +213,9 @@ const Navbar = () => {
                   href="https://www.linkedin.com/in/anderssonsm"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-gray-400 hover:text-blue-400 transition-colors"
+                  className={`p-2 transition-colors ${
+                    isDark ? 'text-gray-400 hover:text-blue-400' : 'text-gray-500 hover:text-blue-600'
+                  }`}
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="w-5 h-5" />

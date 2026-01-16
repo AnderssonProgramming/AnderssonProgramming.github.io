@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import { useLanguage, en } from '../contexts/LanguageContext';
+import { useTheme } from '../contexts/ThemeContext';
 
 const TechStack = () => {
   const { isEnglish } = useLanguage();
+  const { isDark } = useTheme();
   const technologies = [
     // Web Development
     { name: 'Java', icon: '☕' },
@@ -37,7 +39,11 @@ const TechStack = () => {
   ];
 
   return (
-    <section className="py-10 sm:py-16 bg-gray-900/30 border-y border-gray-800">
+    <section className={`py-10 sm:py-16 border-y ${
+      isDark 
+        ? 'bg-gray-900/30 border-gray-800' 
+        : 'bg-gray-100 border-gray-200'
+    }`}>
       <div className="container mx-auto px-4 sm:px-6">
         <motion.div 
           className="text-center mb-6 sm:mb-10"
@@ -45,7 +51,7 @@ const TechStack = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
         >
-          <p className="text-gray-500 uppercase tracking-widest text-xs sm:text-sm">
+          <p className={`uppercase tracking-widest text-xs sm:text-sm ${isDark ? 'text-gray-500' : 'text-gray-600'}`}>
             {isEnglish ? en.techstack.title : 'Tecnologías que domino'}
           </p>
         </motion.div>
@@ -53,8 +59,16 @@ const TechStack = () => {
         {/* Infinite scroll container */}
         <div className="relative overflow-hidden">
           {/* Gradient masks */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-[#0a0a0f] to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-[#0a0a0f] to-transparent z-10"></div>
+          <div className={`absolute left-0 top-0 bottom-0 w-16 sm:w-32 z-10 ${
+            isDark 
+              ? 'bg-gradient-to-r from-[#0a0a0f] to-transparent' 
+              : 'bg-gradient-to-r from-gray-100 to-transparent'
+          }`}></div>
+          <div className={`absolute right-0 top-0 bottom-0 w-16 sm:w-32 z-10 ${
+            isDark 
+              ? 'bg-gradient-to-l from-[#0a0a0f] to-transparent' 
+              : 'bg-gradient-to-l from-gray-100 to-transparent'
+          }`}></div>
 
           {/* Scrolling content */}
           <motion.div 
@@ -70,10 +84,14 @@ const TechStack = () => {
             {[...technologies, ...technologies, ...technologies].map((tech, index) => (
               <div 
                 key={index}
-                className="flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 bg-gray-800/50 rounded-lg sm:rounded-xl border border-gray-700/50 whitespace-nowrap hover:border-blue-500/50 transition-colors"
+                className={`flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl border whitespace-nowrap transition-colors ${
+                  isDark 
+                    ? 'bg-gray-800/50 border-gray-700/50 hover:border-blue-500/50' 
+                    : 'bg-white border-gray-200 hover:border-blue-400 shadow-sm'
+                }`}
               >
                 <span className="text-xl sm:text-2xl">{tech.icon}</span>
-                <span className="text-gray-300 font-medium text-sm sm:text-base">{tech.name}</span>
+                <span className={`font-medium text-sm sm:text-base ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>{tech.name}</span>
               </div>
             ))}
           </motion.div>
